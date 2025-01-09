@@ -14,6 +14,12 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
     }
   };
 
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") {
+      handleSearch();
+    }
+  };
+
   return (
     <div className={styles.searchBar}>
       <input
@@ -21,6 +27,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
         type="text"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
+        onKeyDown={handleKeyDown}
         placeholder="Meklēt ierakstus, albumus vai izpildītājus"
       />
       <button className={styles.button} onClick={handleSearch}>

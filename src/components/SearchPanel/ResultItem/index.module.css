@@ -27,13 +27,17 @@
   }
 
   .heart {
-    padding: 16px 24px;
+    padding: 16px 48px 16px 16px;
     margin-left: auto;
-    color: #c76565;
+    color: #3f3f3f;
     cursor: pointer;
 
     &:hover {
-        color: #fff;
+      color: #fff;
+    }
+
+    &.favorited {
+      color: #c76565;
     }
   }
 }

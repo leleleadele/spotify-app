@@ -3,6 +3,7 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 import SearchPanel from "@/components/SearchPanel";
+import FavoritesPanel from '@/components/FavoritesPanel';
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
 
       <main className={styles.main}>
         <SearchPanel />
+        <FavoritesPanel />
       </main>
     </div>
   );

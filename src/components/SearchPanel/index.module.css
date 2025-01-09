@@ -6,7 +6,7 @@
     background: #121212;
 
     @media (min-width: 768px) {
-        min-width: 600px
+        width: 600px
     }
     .header {
         padding: 40px 40px 0;

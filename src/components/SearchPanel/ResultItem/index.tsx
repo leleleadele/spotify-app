@@ -1,12 +1,22 @@
-import HeartIcon from '@/components/common/Heart';
+import { useDispatch, useSelector } from "react-redux";
+import cn from 'classnames';
+import HeartIcon from "@/components/common/Heart";
 import styles from "./index.module.css";
+import { addFavorite, removeFavorite } from '@/store/slice';
+import { RootState } from '@/store';
 
 interface ResultItemProps {
   data: any;
 }
 
 const ResultItem: React.FC<ResultItemProps> = ({ data }) => {
+  const dispatch = useDispatch();
+  const { favorites } = useSelector((state: RootState) => state.app);
+
   const imageUrl = data.album?.images?.[0]?.url || "";
+  const handleFavoriteClick = (): void => {
+    favorites[data.id] ? dispatch(removeFavorite(data.id)) : dispatch(addFavorite(data.id))
+  };
 
   return (
     <div className={styles.resultItem}>
@@ -17,13 +27,15 @@ const ResultItem: React.FC<ResultItemProps> = ({ data }) => {
       </div>
       <div className={styles.info}>
         <h3>{data.name}</h3>
-        <p>
-          {data.artists.map((artist: any) => artist.name).join(", ")}
-        </p>
+        <p>{data.artists.map((artist: any) => artist.name).join(", ")}</p>
       </div>
-      <div className={styles.heart}>
+      <button
+        type="button"
+        className={cn(styles.heart, favorites[data.id] && styles.favorited)}
+        onClick={handleFavoriteClick}
+      >
         <HeartIcon width={32} height={32} />
-      </div>
+      </button>
     </div>
   );
 };

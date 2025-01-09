@@ -1,0 +1,33 @@
+.searchBar {
+  height: 40px;
+  width: 100%;
+  display: flex;
+  margin: 16px 0;
+
+  .input {
+    padding: 12px;
+    height: 100%;
+    flex-grow: 1;
+    border: 1px solid #575757;
+    border-radius: none;
+    outline: none;
+  }
+
+  .button {
+    height: 100%;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 120px;
+    border: none;
+    border-radius: none;
+    background-color: #e0c698;
+    cursor: pointer;
+    color: #121212;
+
+    &:hover {
+      background-color: #c49e4d;
+    }
+  }
+}

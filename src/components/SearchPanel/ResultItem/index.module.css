@@ -1,0 +1,39 @@
+.resultItem {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border-radius: 5px;
+  background-color: #28282880;
+  height: 120px;
+
+  &:hover {
+    background-color: #282828;
+  }
+
+  .image {
+    height: 100%;
+    width: auto;
+    aspect-ratio: 1;
+
+    img {
+      height: 100%;
+      width: auto;
+      object-fit: cover;
+    }
+  }
+
+  .info {
+    padding: 16px;
+  }
+
+  .heart {
+    padding: 16px 24px;
+    margin-left: auto;
+    color: #c76565;
+    cursor: pointer;
+
+    &:hover {
+        color: #fff;
+    }
+  }
+}

@@ -6,7 +6,6 @@ export default async function handler(
   res: NextApiResponse
 ) {
   const { query } = req.query;
-
   const tokenResponse = await fetch("http://localhost:3000/api/auth");
   const tokenData = await tokenResponse.json();
 
@@ -16,6 +15,7 @@ export default async function handler(
   }
 
   const token = tokenData.access_token;
+  
   try {
     const response = await axios.get("https://api.spotify.com/v1/search", {
       headers: { Authorization: `Bearer ${token}` },

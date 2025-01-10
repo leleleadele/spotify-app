@@ -8,7 +8,7 @@
     padding: 12px;
     height: 100%;
     flex-grow: 1;
-    border: 1px solid #575757;
+    border: var(--border);
     border-radius: none;
     outline: none;
   }
@@ -22,12 +22,13 @@
     min-width: 120px;
     border: none;
     border-radius: none;
-    background-color: #e0c698;
+    background-color: var(--primary-40);
     cursor: pointer;
     color: #121212;
+    font-weight: 800;
 
     &:hover {
-      background-color: #c49e4d;
+      background-color: var(--primary-20);
     }
   }
 }

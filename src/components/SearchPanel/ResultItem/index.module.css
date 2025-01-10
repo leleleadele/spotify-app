@@ -43,7 +43,7 @@
     color: #3f3f3f;
     cursor: pointer;
 
-    &:hover {
+    &:hover, &.favorited:hover {
       color: #fff;
     }
 

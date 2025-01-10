@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import cn from "classnames";
-import HeartIcon from "@/components/common/Heart";
+import HeartIcon from "@/components/common/icons/Heart";
 import styles from "./index.module.css";
 import { addFavorite, removeFavorite } from "@/store/slice";
 import { RootState } from "@/store";

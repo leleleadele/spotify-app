@@ -16,15 +16,21 @@ export default async function handler(
 
   const token = tokenData.access_token;
 
+  console.log('WHOOOOOOOO')
   try {
     const response = await axios.get("https://api.spotify.com/v1/tracks", {
       headers: { Authorization: `Bearer ${token}` },
       params: { ids },
     });
 
+    console.log(response.data)
     res.status(200).json(response.data);
   } catch (error: any) {
+    console.log(error)
+
     console.error("Spotify API Error:", error.response?.data || error.message);
+
+    
     res.status(500).json({ error: "Failed to fetch tracks" });
   }
 }

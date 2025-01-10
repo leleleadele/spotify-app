@@ -1,6 +1,26 @@
 :root {
     --background: #212121;
     --foreground: #ededed;
+    --surface-0: #121212;
+    --surface-10: #282828;
+    --surface-20: #3f3f3f;
+    --surface-30: #575757;
+    --surface-40: #717171;
+    --surface-50: #8b8b8b;
+    --primary-0: #af840d;
+    --primary-10: #ba9132;
+    --primary-20: #c49e4d;
+    --primary-30: #ceab66;
+    --primary-40: #d7b97f;
+    --primary-50: #e0c698;
+    --tonal-0: #211c15;
+    --tonal-10: #36312a;
+    --tonal-20: #4c4741;
+    --tonal-30: #635f59;
+    --tonal-40: #7b7772;
+    --tonal-50: #94918d;
+
+    --border: 1px solid var(--surface-30);
 }
 
 html,

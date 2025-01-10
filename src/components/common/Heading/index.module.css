@@ -1,0 +1,39 @@
+.h1 {
+  font-size: 52px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--primary-50);
+  margin: 20px 0;
+}
+
+.h2 {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--surface-40);
+  margin: 18px 0;
+}
+
+.h3 {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #555;
+  margin: 16px 0;
+}
+
+.h4 {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: #666;
+  margin: 14px 0;
+}
+
+.p {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: #666;
+  margin: 14px 0;
+}

@@ -11,6 +11,7 @@
     border: var(--border);
     border-radius: none;
     outline: none;
+    font-size: 16px;
   }
 
   .button {
@@ -26,6 +27,7 @@
     cursor: pointer;
     color: #121212;
     font-weight: 800;
+    font-size: 16px;
 
     &:hover {
       background-color: var(--primary-20);

@@ -26,7 +26,7 @@ export default function SearchPanel() {
   return (
     <div className={styles.searchPanel}>
       <div className={styles.header}>
-        <Heading tag="h2">Meklēt Spotify</Heading>
+        <Heading tag="h2">Meklēšana</Heading>
         <SearchBar onSearch={handleSearch} />
       </div>
       <div className={styles.results}>

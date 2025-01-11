@@ -4,7 +4,6 @@ import { RootState } from "@/store";
 import styles from "./index.module.css";
 import { removeFavorite } from "@/store/slice";
 import CloseIcon from "@/components/common/icons/Close";
-import Image from "next/image";
 import Heading from "@/components/common/Heading";
 
 interface Track {
@@ -40,7 +39,7 @@ const FavoritesList: React.FC = () => {
   };
 
   return (
-    <div className={styles.container}>
+    <div className={styles.content}>
       <table className={styles.table}>
         <thead>
           <tr>
@@ -70,10 +69,8 @@ const FavoritesList: React.FC = () => {
       </table>
       {!favoriteTracks.length && (
         <div className={styles.emptyMessage}>
-          <Image
-            src="/birdie-1280.png"
-            width={834 / 3}
-            height={1280 / 3}
+          <img
+            src="/birdie-640.png"
             alt="sparrow"
           />
           <div>

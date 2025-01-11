@@ -34,6 +34,6 @@
   font-size: 20px;
   font-weight: 600;
   line-height: 1.5;
-  color: #666;
+  color: var(--tonal-50);
   margin: 14px 0;
 }

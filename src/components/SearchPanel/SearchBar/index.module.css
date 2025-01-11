@@ -25,12 +25,12 @@
     border-radius: none;
     background-color: var(--primary-40);
     cursor: pointer;
-    color: #121212;
+    color: var(--surface-0);
     font-weight: 800;
     font-size: 16px;
 
     &:hover {
-      background-color: var(--primary-20);
+      background-color: var(--foreground);
     }
   }
 }

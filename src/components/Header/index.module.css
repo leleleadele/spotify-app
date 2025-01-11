@@ -1,6 +1,6 @@
 .header {
     --nav-inactive: var(--primary-50);
-    --nav-active: var(--primary-30);
+    --nav-active: var(--foreground);
 
     padding: 24px;
     background-color: var(--surface-0);
@@ -16,7 +16,7 @@
 
         .button {
             font-size: 18px;
-            padding: 12px 8px;
+            padding: 12px 0;
             background: none;
             border: none;
             color: var(--nav-inactive);

@@ -4,8 +4,8 @@ import { RootState } from "@/store";
 import styles from "./index.module.css";
 import { removeFavorite } from "@/store/slice";
 import CloseIcon from "@/components/common/icons/Close";
-import Heading from "@/components/common/Heading";
 import fetchFavorites from "@/services/fetchFavorites";
+import EmptyMessage from '../EmptyMessage';
 
 interface Track {
   id: string;
@@ -70,15 +70,7 @@ const FavoritesList: React.FC = () => {
         </tbody>
       </table>
       {!favoriteTracks.length && (
-        <div className={styles.emptyMessage}>
-          <img className={styles.image} src="/birdie-640.png" alt="sparrow" />
-          <div>
-            <Heading tag="p">Izlasē nav nevienas dziesmas</Heading>
-            <p>
-              Sameklē dziesmu un atzīmē to ar sirsniņu, lai pievienotu izlasei
-            </p>
-          </div>
-        </div>
+        <EmptyMessage />
       )}
     </div>
   );

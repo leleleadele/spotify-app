@@ -3,12 +3,12 @@
   align-items: center;
   gap: 16px;
   border-radius: 5px;
-  background-color: #28282880;
+  background-color: color-mix(in srgb, var(--surface-10) 50%, transparent 50%);
   height: 120px;
   overflow: hidden;
 
   &:hover {
-    background-color: #282828;
+    background-color: var(--surface-10);
   }
 
   .image {
@@ -23,8 +23,8 @@
     overflow: hidden;
 
     .text {
-        text-overflow: ellipsis;
-        overflow: hidden;
+      text-overflow: ellipsis;
+      overflow: hidden;
     }
   }
 
@@ -34,11 +34,12 @@
     border: none;
     padding: 16px 32px 16px 16px;
     margin-left: auto;
-    color: #3f3f3f;
+    color: var(--surface-20);
     cursor: pointer;
 
-    &:hover, &.favorited:hover {
-      color: #fff;
+    &:hover,
+    &.favorited:hover {
+      color: var(--foreground);
     }
 
     &.favorited {

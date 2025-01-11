@@ -7,6 +7,7 @@
   .table {
     width: 100%;
     border-collapse: collapse;
+    table-layout: fixed;
   }
   
   .row:hover {
@@ -17,6 +18,11 @@
     border-bottom: var(--border);
     padding: 8px;
     text-align: left;
+    width: calc(33.3% - 16px);
+
+    &:last-of-type {
+      width: 48px;
+    }
   }
 
   .removeButton {
@@ -31,23 +37,6 @@
   }
 
   .removeButton:hover {
-    color: var(--primary-30);
-  }
-
-  .emptyMessage {
-    display: flex;
-    gap: 16px;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: var(--surface-40);
-    text-align: center;
-    height: 100%;
-
-    .image {
-      height: 250px;
-      object-fit: contain;
-      opacity: 0.5;
-    }
+    color: var(--foreground);
   }
 }

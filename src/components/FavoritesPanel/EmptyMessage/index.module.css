@@ -1,0 +1,16 @@
+.emptyMessage {
+  display: flex;
+  gap: 16px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--surface-40);
+  text-align: center;
+  height: 100%;
+
+  .image {
+    height: 250px;
+    object-fit: contain;
+    opacity: 0.5;
+  }
+}

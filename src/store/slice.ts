@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import loadDataFromStorage from './utils/loadDataFromStorage';
 
 interface AppState {
   favorites: { [id: string]: boolean };
@@ -6,7 +7,8 @@ interface AppState {
 }
 
 const initialState: AppState = {
-  favorites: {},
+  favorites:
+    typeof window !== "undefined" ? loadDataFromStorage("favorites") : {},
   activeView: "search",
 };
 
@@ -14,7 +16,10 @@ const appSlice = createSlice({
   name: "search",
   initialState,
   reducers: {
-    setActiveView(state: AppState, action: PayloadAction<"search" | "favorites">) {
+    setActiveView(
+      state: AppState,
+      action: PayloadAction<"search" | "favorites">
+    ) {
       state.activeView = action.payload;
     },
     addFavorite(state: AppState, action: PayloadAction<string>) {

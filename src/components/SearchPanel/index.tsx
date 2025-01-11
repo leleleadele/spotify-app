@@ -2,24 +2,16 @@ import ResultItem from "./ResultItem";
 import SearchBar from "./SearchBar";
 import { useState } from "react";
 import styles from "./index.module.css";
-import Heading from '../common/Heading';
-import { TrackObject } from '@/pages/api/types';
+import Heading from "../common/Heading";
+import { TrackObject } from "@/pages/api/types";
+import fetchSearchResults from '@/services/fetchSearchResults';
 
 const SearchPanel: React.FC = () => {
   const [results, setResults] = useState<TrackObject[]>([]);
 
   const handleSearch = async (query: string): Promise<void> => {
-    try {
-      const response = await fetch(`/api/search?query=${query}`);
-      if (!response.ok) {
-        throw new Error("Failed to fetch search results");
-      }
-      const data = await response.json();
-      setResults(data.tracks?.items || []);
-    } catch (error: unknown) {
-      console.error(error)
-      setResults([]);
-    }
+    const searchResults = await fetchSearchResults(query);
+    setResults(searchResults);
   };
 
   return (
@@ -35,6 +27,6 @@ const SearchPanel: React.FC = () => {
       </div>
     </div>
   );
-}
+};
 
 export default SearchPanel;

@@ -47,6 +47,7 @@
     .image {
       height: 250px;
       object-fit: contain;
+      opacity: 0.5;
     }
   }
 }

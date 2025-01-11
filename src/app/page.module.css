@@ -3,6 +3,8 @@
   position: relative;
   height: 100%;
   width: 100%;
+  display: flex;
+  flex-direction: column;
 
   .main {
     position: relative;
@@ -10,7 +12,8 @@
     width: 200vw;
     display: flex;
     transform: translateX(0);
-    transition: transform 0.5s ease-in-out;
+    transition: transform 0.8s ease-in-out;
+    overflow: hidden;
 
     &.showRight {
       transform: translateX(-50%);

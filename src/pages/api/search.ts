@@ -6,7 +6,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const { query } = req.query;
+  const { query, limit, offset } = req.query;
   const tokenResponse = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/auth`);
   const tokenData = await tokenResponse.json();
 
@@ -22,7 +22,7 @@ export default async function handler(
       "https://api.spotify.com/v1/search",
       {
         headers: { Authorization: `Bearer ${token}` },
-        params: { q: query, type: "track", limit: 10 },
+        params: { q: query, type: "track", limit, offset },
       }
     );
 

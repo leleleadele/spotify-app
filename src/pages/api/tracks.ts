@@ -7,7 +7,7 @@ export default async function handler(
   res: NextApiResponse
 ) {
   const { ids } = req.query;
-  const tokenResponse = await fetch("http://localhost:3000/api/auth");
+  const tokenResponse = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/auth`);
   const tokenData = await tokenResponse.json();
 
   if (!tokenData.access_token) {

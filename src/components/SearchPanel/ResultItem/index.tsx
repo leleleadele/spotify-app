@@ -30,8 +30,8 @@ const ResultItem: React.FC<ResultItemProps> = ({ data }) => {
           <img src={imageUrl} alt={data.name} className={styles.image} />
         )}
         <div className={styles.info}>
-          <h3>{data.name}</h3>
-          <p>
+          <h3 className={styles.text}>{data.name}</h3>
+          <p className={styles.text}>
             {data.artists.map((artist: ArtistObject) => artist.name).join(", ")}
           </p>
         </div>

@@ -22,7 +22,7 @@
     text-wrap: nowrap;
     overflow: hidden;
 
-    h3, p {
+    .text {
         text-overflow: ellipsis;
         overflow: hidden;
     }

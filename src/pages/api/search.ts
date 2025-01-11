@@ -1,13 +1,13 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import axios from "axios";
-import { SearchResponse } from './types';
+import { SearchResponse } from "./types";
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
   const { query } = req.query;
-  const tokenResponse = await fetch("http://localhost:3000/api/auth");
+  const tokenResponse = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/auth`);
   const tokenData = await tokenResponse.json();
 
   if (!tokenData.access_token) {
@@ -16,12 +16,15 @@ export default async function handler(
   }
 
   const token = tokenData.access_token;
-  
+
   try {
-    const response = await axios.get<SearchResponse>("https://api.spotify.com/v1/search", {
-      headers: { Authorization: `Bearer ${token}` },
-      params: { q: query, type: "track", limit: 10 },
-    });
+    const response = await axios.get<SearchResponse>(
+      "https://api.spotify.com/v1/search",
+      {
+        headers: { Authorization: `Bearer ${token}` },
+        params: { q: query, type: "track", limit: 10 },
+      }
+    );
 
     res.status(200).json(response.data);
   } catch (error) {

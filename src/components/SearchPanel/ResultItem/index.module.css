@@ -15,12 +15,6 @@
     height: 100%;
     width: auto;
     aspect-ratio: 1;
-
-    img {
-      height: 100%;
-      width: auto;
-      object-fit: cover;
-    }
   }
 
   .info {

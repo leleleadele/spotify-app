@@ -3,12 +3,12 @@ import SearchBar from "./SearchBar";
 import { useState } from "react";
 import styles from "./index.module.css";
 import Heading from '../common/Heading';
+import { TrackObject } from '@/pages/api/types';
 
-export default function SearchPanel() {
-  const [results, setResults] = useState<any[]>([]);
-  const [error, setError] = useState<string | null>(null);
+const SearchPanel: React.FC = () => {
+  const [results, setResults] = useState<TrackObject[]>([]);
 
-  const handleSearch = async (query: string) => {
+  const handleSearch = async (query: string): Promise<void> => {
     try {
       const response = await fetch(`/api/search?query=${query}`);
       if (!response.ok) {
@@ -16,9 +16,8 @@ export default function SearchPanel() {
       }
       const data = await response.json();
       setResults(data.tracks?.items || []);
-      setError(null);
-    } catch (err: any) {
-      setError(err.message);
+    } catch (error: unknown) {
+      console.error(error)
       setResults([]);
     }
   };
@@ -37,3 +36,5 @@ export default function SearchPanel() {
     </div>
   );
 }
+
+export default SearchPanel;

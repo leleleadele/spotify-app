@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "@/store";
 import styles from "./index.module.css";
@@ -20,19 +20,22 @@ const FavoritesList: React.FC = () => {
   const dispatch = useDispatch();
   const [favoriteTracks, setFavoriteTracks] = useState<Track[]>([]);
 
-  const fetchFavorites = async () => {
+  const fetchFavorites = useCallback(async () => {
     if (Object.keys(favorites).length > 0) {
       const ids = Object.keys(favorites).join(",");
-      console.log(ids, favorites, Object.keys(favorites));
       const response = await fetch(`/api/tracks?ids=${ids}`);
       const data = await response.json();
       setFavoriteTracks(data.tracks);
     }
-  };
+  }, [favorites]);
 
   useEffect(() => {
-    Object.keys(favorites).length ? fetchFavorites() : setFavoriteTracks([]);
-  }, [favorites]);
+    if (Object.keys(favorites).length) {
+      fetchFavorites();
+      return;
+    }
+    setFavoriteTracks([]);
+  }, [favorites, fetchFavorites]);
 
   const handleRemove = (id: string) => {
     dispatch(removeFavorite(id));
@@ -69,10 +72,7 @@ const FavoritesList: React.FC = () => {
       </table>
       {!favoriteTracks.length && (
         <div className={styles.emptyMessage}>
-          <img
-            src="/birdie-640.png"
-            alt="sparrow"
-          />
+          <img src="/birdie-640.png" alt="sparrow" />
           <div>
             <Heading tag="p">Izlasē nav nevienas dziesmas</Heading>
             <p>

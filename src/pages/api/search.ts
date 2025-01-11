@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import axios from "axios";
+import { SearchResponse } from './types';
 
 export default async function handler(
   req: NextApiRequest,
@@ -17,7 +18,7 @@ export default async function handler(
   const token = tokenData.access_token;
   
   try {
-    const response = await axios.get("https://api.spotify.com/v1/search", {
+    const response = await axios.get<SearchResponse>("https://api.spotify.com/v1/search", {
       headers: { Authorization: `Bearer ${token}` },
       params: { q: query, type: "track", limit: 10 },
     });

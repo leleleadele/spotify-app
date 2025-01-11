@@ -4,9 +4,10 @@ import HeartIcon from "@/components/common/icons/Heart";
 import styles from "./index.module.css";
 import { addFavorite, removeFavorite } from "@/store/slice";
 import { RootState } from "@/store";
+import { ArtistObject, TrackObject } from '@/pages/api/types';
 
 interface ResultItemProps {
-  data: any;
+  data: TrackObject;
 }
 
 const ResultItem: React.FC<ResultItemProps> = ({ data }) => {
@@ -15,9 +16,11 @@ const ResultItem: React.FC<ResultItemProps> = ({ data }) => {
 
   const imageUrl = data.album?.images?.[0]?.url || "";
   const handleFavoriteClick = (): void => {
-    favorites[data.id]
-      ? dispatch(removeFavorite(data.id))
-      : dispatch(addFavorite(data.id));
+    if (favorites[data.id]) {
+      dispatch(removeFavorite(data.id));
+      return;
+    }
+    dispatch(addFavorite(data.id));
   };
 
   return (
@@ -34,7 +37,7 @@ const ResultItem: React.FC<ResultItemProps> = ({ data }) => {
         </div>
         <div className={styles.info}>
           <h3>{data.name}</h3>
-          <p>{data.artists.map((artist: any) => artist.name).join(", ")}</p>
+          <p>{data.artists.map((artist: ArtistObject) => artist.name).join(", ")}</p>
         </div>
         <button
           type="button"

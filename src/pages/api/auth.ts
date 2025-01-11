@@ -32,6 +32,7 @@ export default async function handler(
 
     res.status(200).json(response.data);
   } catch (error) {
+    console.error(error);
     res.status(500).json({ error: "Failed to authenticate with Spotify" });
   }
 }

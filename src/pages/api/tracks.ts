@@ -1,3 +1,4 @@
+import { TracksResponse } from "./types";
 import type { NextApiRequest, NextApiResponse } from "next";
 import axios from "axios";
 
@@ -16,21 +17,23 @@ export default async function handler(
 
   const token = tokenData.access_token;
 
-  console.log('WHOOOOOOOO')
   try {
-    const response = await axios.get("https://api.spotify.com/v1/tracks", {
-      headers: { Authorization: `Bearer ${token}` },
-      params: { ids },
-    });
-
-    console.log(response.data)
+    const response = await axios.get<TracksResponse>(
+      "https://api.spotify.com/v1/tracks",
+      {
+        headers: { Authorization: `Bearer ${token}` },
+        params: { ids },
+      }
+    );
     res.status(200).json(response.data);
-  } catch (error: any) {
-    console.log(error)
+  } catch (error: unknown) {
+    if (axios.isAxiosError(error)) {
+      console.error(
+        "Spotify API Error:",
+        error.response?.data || error.message
+      );
 
-    console.error("Spotify API Error:", error.response?.data || error.message);
-
-    
-    res.status(500).json({ error: "Failed to fetch tracks" });
+      res.status(500).json({ error: "Failed to fetch tracks" });
+    }
   }
 }

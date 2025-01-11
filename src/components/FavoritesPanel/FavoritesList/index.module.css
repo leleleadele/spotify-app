@@ -9,12 +9,11 @@
     border-collapse: collapse;
   }
   
-  tbody tr:hover {
+  .row:hover {
     background-color: var(--surface-10)
   }
 
-  th,
-  td {
+  .cell {
     border-bottom: var(--border);
     padding: 8px;
     text-align: left;
@@ -45,7 +44,7 @@
     text-align: center;
     height: 100%;
 
-    img {
+    .image {
       height: 250px;
       object-fit: contain;
     }

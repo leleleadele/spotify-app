@@ -4,7 +4,7 @@ import HeartIcon from "@/components/common/icons/Heart";
 import styles from "./index.module.css";
 import { addFavorite, removeFavorite } from "@/store/slice";
 import { RootState } from "@/store";
-import { ArtistObject, TrackObject } from '@/pages/api/types';
+import { ArtistObject, TrackObject } from "@/pages/api/types";
 
 interface ResultItemProps {
   data: TrackObject;
@@ -26,18 +26,14 @@ const ResultItem: React.FC<ResultItemProps> = ({ data }) => {
   return (
     <article>
       <div className={styles.resultItem}>
-        <div className={styles.image}>
-          {imageUrl && (
-            <img
-              src={imageUrl}
-              alt={data.name}
-              className={styles.ResultImage}
-            />
-          )}
-        </div>
+        {imageUrl && (
+          <img src={imageUrl} alt={data.name} className={styles.image} />
+        )}
         <div className={styles.info}>
           <h3>{data.name}</h3>
-          <p>{data.artists.map((artist: ArtistObject) => artist.name).join(", ")}</p>
+          <p>
+            {data.artists.map((artist: ArtistObject) => artist.name).join(", ")}
+          </p>
         </div>
         <button
           type="button"

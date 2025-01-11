@@ -14,7 +14,7 @@
         display: flex;
         gap: 16px;
 
-        button {
+        .button {
             font-size: 20px;
             padding: 12px 8px;
             background: none;

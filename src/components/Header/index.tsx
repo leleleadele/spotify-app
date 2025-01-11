@@ -22,7 +22,7 @@ const Header: React.FC = () => {
         <button
           type="button"
           className={cn(
-            styles.navigationButton,
+            styles.button,
             activeView === "search" && styles.active
           )}
           onClick={openSearch}
@@ -32,7 +32,7 @@ const Header: React.FC = () => {
         <button
           type="button"
           className={cn(
-            styles.navigationButton,
+            styles.button,
             activeView === "favorites" && styles.active
           )}
           onClick={openFavorites}

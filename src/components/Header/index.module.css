@@ -1,0 +1,31 @@
+.header {
+    --nav-inactive: var(--primary-50);
+    --nav-active: var(--primary-30);
+
+    padding: 24px;
+    background-color: var(--surface-0);
+    border-bottom: var(--border);
+
+    @media (min-width: 1200px) {
+        display: none;
+      }
+
+    .navigation {
+        display: flex;
+        gap: 16px;
+
+        button {
+            font-size: 20px;
+            padding: 12px 8px;
+            background: none;
+            border: none;
+            color: var(--nav-inactive);
+            cursor: pointer;
+
+            &.active {
+                border-bottom: 1px solid var(--nav-active);
+                color: var(--nav-active);
+            }
+        }
+    }
+}

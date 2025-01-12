@@ -28,7 +28,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         onKeyDown={handleKeyDown}
-        placeholder="Meklēt ierakstus, albumus vai izpildītājus"
+        placeholder="Meklē pēc ieraksta, albuma vai izpildītāja vārda"
       />
       <button className={styles.button} onClick={handleSearch}>
         Meklēt

@@ -2,15 +2,15 @@ import { useDispatch, useSelector } from "react-redux";
 import cn from "classnames";
 import HeartIcon from "@/components/common/icons/Heart";
 import styles from "./index.module.css";
-import { addFavorite, removeFavorite } from "@/store/slices/spotify";
+import { addFavorite, removeFavorite } from "@/store/slices/spotifySlice";
 import { RootState } from "@/store";
 import { ArtistObject, TrackObject } from "@/types";
 
-interface ResultItemProps {
+interface SearchResultProps {
   data: TrackObject;
 }
 
-const ResultItem: React.FC<ResultItemProps> = ({ data }) => {
+const SearchResult: React.FC<SearchResultProps> = ({ data }) => {
   const dispatch = useDispatch();
   const { favorites } = useSelector((state: RootState) => state.spotify);
 
@@ -25,7 +25,7 @@ const ResultItem: React.FC<ResultItemProps> = ({ data }) => {
 
   return (
     <article>
-      <div className={styles.resultItem}>
+      <div className={styles.searchResult}>
         {imageUrl && (
           <img src={imageUrl} alt={data.name} className={styles.image} />
         )}
@@ -47,4 +47,4 @@ const ResultItem: React.FC<ResultItemProps> = ({ data }) => {
   );
 };
 
-export default ResultItem;
+export default SearchResult;

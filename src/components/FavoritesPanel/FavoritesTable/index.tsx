@@ -2,24 +2,16 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "@/store";
 import styles from "./index.module.css";
-import { removeFavorite } from "@/store/slices/spotify";
+import { removeFavorite } from "@/store/slices/spotifySlice";
 import CloseIcon from "@/components/common/icons/Close";
-import fetchFavorites from "@/services/fetchFavorites";
-import EmptyMessage from "../EmptyMessage";
+import fetchFavorites from "@/api/fetchFavorites";
+import EmptyMessage from "../../EmptyMessage";
+import { TrackObject } from '@/types';
 
-interface Track {
-  id: string;
-  name: string;
-  album: {
-    name: string;
-  };
-  artists: { name: string }[];
-}
-
-const FavoritesList: React.FC = () => {
+const FavoritesTable: React.FC = () => {
   const { favorites } = useSelector((state: RootState) => state.spotify);
   const dispatch = useDispatch();
-  const [favoriteTracks, setFavoriteTracks] = useState<Track[]>([]);
+  const [favoriteTracks, setFavoriteTracks] = useState<TrackObject[]>([]);
 
   const handleRemove = (id: string) => {
     dispatch(removeFavorite(id));
@@ -74,4 +66,4 @@ const FavoritesList: React.FC = () => {
   );
 };
 
-export default FavoritesList;
+export default FavoritesTable;

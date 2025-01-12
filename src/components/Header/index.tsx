@@ -1,5 +1,5 @@
 import { RootState } from "@/store";
-import { setActiveView } from "@/store/slices/spotify";
+import { setActiveView } from "@/store/slices/spotifySlice";
 import { useDispatch, useSelector } from "react-redux";
 import cn from "classnames";
 import styles from "./index.module.css";

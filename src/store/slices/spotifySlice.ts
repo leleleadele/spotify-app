@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import loadDataFromStorage from "../utils/loadDataFromStorage";
+import loadDataFromStorage from "../../utils/loadDataFromStorage";
 
 interface FavoritesBrowserState {
   favorites: { [id: string]: boolean };

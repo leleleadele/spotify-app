@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import spotifyReducer from "./slices/spotify";
+import spotifyReducer from "./slices/spotifySlice";
 import { localStorageMiddleware } from './middleware';
 
 export const store = configureStore({

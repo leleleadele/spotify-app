@@ -1,11 +1,11 @@
-import ResultItem from "./ResultItem";
-import SearchBar from "./SearchBar";
+import SearchBar from "../SearchBar";
 import { useState } from "react";
 import styles from "./index.module.css";
 import Heading from "../common/Heading";
 import { TrackObject } from "@/types";
-import fetchSearchResults from "@/services/fetchSearchResults";
+import fetchSearchResults from "@/api/fetchSearchResults";
 import HorizontalLoader from "../common/HorizontalLoader";
+import SearchResult from '../SearchResult';
 
 const SearchPanel: React.FC = () => {
   const [results, setResults] = useState<TrackObject[]>([]);
@@ -41,7 +41,7 @@ const SearchPanel: React.FC = () => {
         {loading ? (
           <HorizontalLoader />
         ) : (
-          results.map((track) => <ResultItem data={track} key={track.id} />)
+          results.map((track) => <SearchResult data={track} key={track.id} />)
         )}
         {!loading && results.length > 0 && (
           <div className={styles.pagination}>

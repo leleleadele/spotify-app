@@ -20,7 +20,7 @@ const SearchResult: React.FC<SearchResultProps> = ({ data }) => {
       dispatch(removeFavorite(data.id));
       return;
     }
-    dispatch(addFavorite(data.id));
+    dispatch(addFavorite(data));
   };
 
   return (

@@ -1,34 +1,29 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { RootState } from "@/store";
+import { AppDispatch, RootState } from "@/store";
 import styles from "./index.module.css";
-import { removeFavorite } from "@/store/slices/spotifySlice";
-import CloseIcon from "@/components/common/icons/Close";
-import fetchFavorites from "@/api/fetchFavorites";
+import {
+  fetchFavoritesThunk,
+  removeFavorite,
+} from "@/store/slices/spotifySlice";
+import CloseIcon from "@/components/_icons/Close";
 import EmptyMessage from "../../EmptyMessage";
-import { TrackObject } from '@/types';
+import loadDataFromStorage from "@/utils/loadDataFromStorage";
 
 const FavoritesTable: React.FC = () => {
+  typeof window !== "undefined" ? loadDataFromStorage("favorites") : {};
   const { favorites } = useSelector((state: RootState) => state.spotify);
-  const dispatch = useDispatch();
-  const [favoriteTracks, setFavoriteTracks] = useState<TrackObject[]>([]);
+  const dispatch = useDispatch<AppDispatch>();
 
   const handleRemove = (id: string) => {
     dispatch(removeFavorite(id));
   };
 
   useEffect(() => {
-    const loadFavorites = async () => {
-      if (Object.keys(favorites).length) {
-        const tracks = await fetchFavorites(favorites);
-        setFavoriteTracks(tracks);
-        return;
-      }
-      setFavoriteTracks([]);
-    };
-
-    loadFavorites();
-  }, [favorites]);
+    const storedIds =
+      typeof window !== "undefined" ? loadDataFromStorage("favorites") : [];
+    dispatch(fetchFavoritesThunk(storedIds));
+  }, []);
 
   return (
     <div className={styles.content}>
@@ -42,7 +37,7 @@ const FavoritesTable: React.FC = () => {
           </tr>
         </thead>
         <tbody className={styles.table}>
-          {favoriteTracks.map((track) => (
+          {Object.values(favorites).map((track) => (
             <tr key={track.id} className={styles.row}>
               <td className={styles.cell}>{track.name}</td>
               <td className={styles.cell}>{track.album.name}</td>
@@ -61,7 +56,7 @@ const FavoritesTable: React.FC = () => {
           ))}
         </tbody>
       </table>
-      {!favoriteTracks.length && <EmptyMessage />}
+      {!Object.values(favorites).length && <EmptyMessage />}
     </div>
   );
 };

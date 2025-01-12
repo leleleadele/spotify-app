@@ -1,10 +1,10 @@
-const loadDataFromStorage = (key: string): Record<string, boolean> => {
+const loadDataFromStorage = (key: string): string[] => {
   try {
     const storedData = localStorage.getItem(key);
-    return storedData ? JSON.parse(storedData) : {};
+    return storedData ? JSON.parse(storedData) : [];
   } catch (error) {
     console.error("Failed to load data from localStorage:", error);
-    return {};
+    return [];
   }
 };
 

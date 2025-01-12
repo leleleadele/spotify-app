@@ -1,4 +1,4 @@
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { setupMockStore } from "@/utils/testUtils";
 import FavoritesTable from "@/components/FavoritesTable";

@@ -53,7 +53,7 @@ const spotifySlice = createSlice({
         state.error.favorites = null;
       })
       .addCase(fetchFavoritesThunk.fulfilled, (state, action) => {
-        let parsedData: Record<string, TrackObject> = {};
+        const parsedData: Record<string, TrackObject> = {};
 
         action.payload.forEach((track: TrackObject) => {
           parsedData[track.id] = track;
@@ -87,7 +87,8 @@ export const fetchSearchResultsThunk = createAsyncThunk<
 
       const data = await response.json();
       return data.tracks?.items || [];
-    } catch (error: any) {
+    } catch (error: unknown) {
+      console.error(error);
       return thunkAPI.rejectWithValue("Failed to fetch search results");
     }
   }
@@ -104,7 +105,8 @@ export const fetchFavoritesThunk = createAsyncThunk(
         return data.tracks;
       }
       return [];
-    } catch (error: any) {
+    } catch (error: unknown) {
+      console.error(error);
       return thunkAPI.rejectWithValue("Failed to fetch favorite tracks");
     }
   }

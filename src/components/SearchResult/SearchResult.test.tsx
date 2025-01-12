@@ -15,7 +15,7 @@ describe("SearchResult Component", () => {
           data={{
             id: "1",
             name: "Test Song",
-            // @ts-ignore
+            // @ts-expect-error
             album: { images: [] },
             artists: [],
           }}
@@ -40,7 +40,7 @@ describe("SearchResult Component", () => {
           data={{
             id: "1",
             name: "Test Song",
-            // @ts-ignore
+            // @ts-expect-error
             album: { images: [] },
             artists: [],
           }}

@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { TrackObject } from "@/types";
 
 interface SpotifyState {
+  searchResults: TrackObject[];
   favorites: { [id: string]: TrackObject };
   loading: { favorites: boolean; search: boolean };
   error: { favorites: string | null; search: string | null };
@@ -9,6 +10,7 @@ interface SpotifyState {
 }
 
 const initialState: SpotifyState = {
+  searchResults: [],
   favorites: {},
   loading: { favorites: false, search: false },
   error: { favorites: null, search: null },
@@ -25,21 +27,27 @@ const spotifySlice = createSlice({
     ) {
       state.activeView = action.payload;
     },
-    addFavorite(
-      state: SpotifyState,
-      action: PayloadAction<TrackObject>
-    ) {
+    addFavorite(state: SpotifyState, action: PayloadAction<TrackObject>) {
       state.favorites[action.payload.id] = action.payload;
     },
-    removeFavorite(
-      state: SpotifyState,
-      action: PayloadAction<string>
-    ) {
+    removeFavorite(state: SpotifyState, action: PayloadAction<string>) {
       delete state.favorites[action.payload];
     },
   },
   extraReducers: (builder) => {
     builder
+      .addCase(fetchSearchResultsThunk.pending, (state) => {
+        state.loading.search = true;
+        state.error.search = null;
+      })
+      .addCase(fetchSearchResultsThunk.fulfilled, (state, action) => {
+        state.loading.search = false;
+        state.searchResults = action.payload;
+      })
+      .addCase(fetchSearchResultsThunk.rejected, (state, action) => {
+        state.loading.search = false;
+        state.error.search = action.payload || "Failed to fetch search results";
+      })
       .addCase(fetchFavoritesThunk.pending, (state) => {
         state.loading.favorites = true;
         state.error.favorites = null;
@@ -60,6 +68,30 @@ const spotifySlice = createSlice({
       });
   },
 });
+
+export const fetchSearchResultsThunk = createAsyncThunk<
+  TrackObject[],
+  { query: string; offset?: number; limit?: number },
+  { rejectValue: string }
+>(
+  "search/fetchSearchResults",
+  async ({ query, offset = 0, limit = 10 }, thunkAPI) => {
+    try {
+      const response = await fetch(
+        `/api/search?query=${query}&offset=${offset}&limit=${limit}`
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to fetch search results");
+      }
+
+      const data = await response.json();
+      return data.tracks?.items || [];
+    } catch (error: any) {
+      return thunkAPI.rejectWithValue("Failed to fetch search results");
+    }
+  }
+);
 
 export const fetchFavoritesThunk = createAsyncThunk(
   "favorites/fetchFavorites",

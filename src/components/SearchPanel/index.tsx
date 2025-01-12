@@ -2,33 +2,30 @@ import SearchBar from "../SearchBar";
 import { useState } from "react";
 import styles from "./index.module.css";
 import Heading from "../Heading";
-import { TrackObject } from "@/types";
-import fetchSearchResults from "@/api/fetchSearchResults";
 import HorizontalLoader from "../HorizontalLoader";
-import SearchResult from '../SearchResult';
+import SearchResult from "../SearchResult";
+import { AppDispatch, RootState } from "@/store";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchSearchResultsThunk } from "@/store/slices/spotifySlice";
 
 const SearchPanel: React.FC = () => {
-  const [results, setResults] = useState<TrackObject[]>([]);
+  const dispatch = useDispatch<AppDispatch>();
+  const { searchResults, loading } = useSelector(
+    (state: RootState) => state.spotify
+  );
   const [query, setQuery] = useState<string>("");
   const [offset, setOffset] = useState<number>(0);
-  const [loading, setLoading] = useState<boolean>(false);
   const limit = 10;
 
   const handleSearch = async (searchQuery: string): Promise<void> => {
     setQuery(searchQuery);
     setOffset(0);
-    setLoading(true);
-    const searchResults = await fetchSearchResults(searchQuery, 0, limit);
-    setResults(searchResults);
-    setLoading(false);
+    dispatch(fetchSearchResultsThunk({ query: searchQuery, offset: 0, limit }));
   };
 
   const loadMoreResults = async (newOffset: number): Promise<void> => {
-    setLoading(true);
-    const searchResults = await fetchSearchResults(query, newOffset, limit);
-    setResults(searchResults);
+    dispatch(fetchSearchResultsThunk({ query, offset: newOffset, limit }));
     setOffset(newOffset);
-    setLoading(false);
   };
 
   return (
@@ -38,12 +35,14 @@ const SearchPanel: React.FC = () => {
         <SearchBar onSearch={handleSearch} />
       </div>
       <div className={styles.results}>
-        {loading ? (
+        {loading.search ? (
           <HorizontalLoader />
         ) : (
-          results.map((track) => <SearchResult data={track} key={track.id} />)
+          searchResults.map((track) => (
+            <SearchResult data={track} key={track.id} />
+          ))
         )}
-        {!loading && results.length > 0 && (
+        {!loading.search && searchResults.length > 0 && (
           <div className={styles.pagination}>
             <button
               onClick={() => loadMoreResults(Math.max(0, offset - limit))}

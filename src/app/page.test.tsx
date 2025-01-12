@@ -36,7 +36,6 @@ describe("Home Component", () => {
       </Provider>
     );
 
-    // Wait for `useEffect` to set `isClient` to true
     await waitFor(() => {
       expect(screen.getByText("Mocked Header")).toBeInTheDocument();
       expect(screen.getByText("Mocked SearchPanel")).toBeInTheDocument();
@@ -61,12 +60,10 @@ describe("Home Component", () => {
       </Provider>
     );
 
-    // Wait for `useEffect` to set `isClient` to true
     await waitFor(() => {
       expect(screen.getByText("Mocked Header")).toBeInTheDocument();
     });
 
-    // Assert that the 'favorites' class is applied
     const mainElement = screen.getByRole("main");
     expect(mainElement).toHaveClass("showRight");
   });
@@ -88,12 +85,10 @@ describe("Home Component", () => {
       </Provider>
     );
 
-    // Wait for `useEffect` to set `isClient` to true
     await waitFor(() => {
       expect(screen.getByText("Mocked Header")).toBeInTheDocument();
     });
 
-    // Assert that the 'showRight' class is not applied
     const mainElement = screen.getByRole("main");
     expect(mainElement).not.toHaveClass("showRight");
   });

@@ -1,4 +1,4 @@
-import styles from "./index.module.css";
+import styles from "./Heading.module.css";
 
 interface I_HeadingProps {
   tag: "h1" | "h2" | "h3" | "h4" | "p";

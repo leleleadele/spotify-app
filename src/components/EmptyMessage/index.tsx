@@ -1,9 +1,9 @@
 import Heading from "@/components/Heading";
-import styles from "./index.module.css";
+import styles from "./EmptyMessage.module.css";
 
 const EmptyMessage: React.FC = () => {
   return (
-    <div className={styles.emptyMessage}>
+    <div data-testid="empty-message" className={styles.emptyMessage}>
       <img className={styles.image} src="/birdie-640.png" alt="sparrow" />
       <div>
         <Heading tag="p">Izlasē nav nevienas dziesmas</Heading>

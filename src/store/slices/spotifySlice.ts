@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { TrackObject } from "@/types";
 
-interface SpotifyState {
+export interface SpotifyState {
   searchResults: TrackObject[];
   favorites: { [id: string]: TrackObject };
   loading: { favorites: boolean; search: boolean };
@@ -9,7 +9,7 @@ interface SpotifyState {
   activeView: "search" | "favorites";
 }
 
-const initialState: SpotifyState = {
+export const initialState: SpotifyState = {
   searchResults: [],
   favorites: {},
   loading: { favorites: false, search: false },

@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import cn from "classnames";
 import HeartIcon from "@/components/_icons/Heart";
-import styles from "./index.module.css";
+import styles from "./SearchResult.module.css";
 import { addFavorite, removeFavorite } from "@/store/slices/spotifySlice";
 import { RootState } from "@/store";
 import { ArtistObject, TrackObject } from "@/types";

@@ -7,7 +7,7 @@ import FavoritesPanel from "@/components/FavoritesPanel";
 import Header from "@/components/Header";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store";
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 export default function Home() {
   const { activeView } = useSelector((state: RootState) => state.spotify);
@@ -16,7 +16,10 @@ export default function Home() {
   useEffect(() => {
     setIsClient(true);
   }, []);
-  
+
+  if (!isClient) {
+    return <div></div>;
+  }
   return (
     <div className={styles.page}>
       {isClient && (

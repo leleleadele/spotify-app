@@ -1,9 +1,9 @@
-import SearchBar from "../SearchBar";
+import SearchBar from "@/components/SearchBar";
 import { useState } from "react";
-import styles from "./index.module.css";
+import styles from "./SearchPanel.module.css";
 import Heading from "../Heading";
 import HorizontalLoader from "../HorizontalLoader";
-import SearchResult from "../SearchResult";
+import SearchResult from "@/components/SearchResult";
 import { AppDispatch, RootState } from "@/store";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSearchResultsThunk } from "@/store/slices/spotifySlice";

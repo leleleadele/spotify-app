@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { AppDispatch, RootState } from "@/store";
-import styles from "./index.module.css";
+import styles from "./FavoritesTable.module.css";
 import {
   fetchFavoritesThunk,
   removeFavorite,
@@ -9,11 +9,13 @@ import {
 import CloseIcon from "@/components/_icons/Close";
 import EmptyMessage from "../EmptyMessage";
 import loadDataFromStorage from "@/utils/loadDataFromStorage";
-import HorizontalLoader from '../HorizontalLoader';
+import HorizontalLoader from "../HorizontalLoader";
 
 const FavoritesTable: React.FC = () => {
   typeof window !== "undefined" ? loadDataFromStorage("favorites") : {};
-  const { favorites, loading } = useSelector((state: RootState) => state.spotify);
+  const { favorites, loading } = useSelector(
+    (state: RootState) => state.spotify
+  );
   const dispatch = useDispatch<AppDispatch>();
 
   const handleRemove = (id: string) => {
@@ -27,7 +29,7 @@ const FavoritesTable: React.FC = () => {
   }, []);
 
   return (
-    <div className={styles.content}>
+    <div data-testid="favorites-table" className={styles.content}>
       {loading.favorites && <HorizontalLoader />}
       <table className={styles.table}>
         <thead>
@@ -48,6 +50,7 @@ const FavoritesTable: React.FC = () => {
               </td>
               <td className={styles.cell}>
                 <button
+                  data-testid="favorites-table-remove-button"
                   className={styles.removeButton}
                   onClick={() => handleRemove(track.id)}
                 >

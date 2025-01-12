@@ -2,7 +2,7 @@ import { RootState } from "@/store";
 import { setActiveView } from "@/store/slices/spotifySlice";
 import { useDispatch, useSelector } from "react-redux";
 import cn from "classnames";
-import styles from "./index.module.css";
+import styles from "./Header.module.css";
 
 const Header: React.FC = () => {
   const dispatch = useDispatch();

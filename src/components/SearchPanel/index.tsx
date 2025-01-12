@@ -1,10 +1,10 @@
 import SearchBar from "../SearchBar";
 import { useState } from "react";
 import styles from "./index.module.css";
-import Heading from "../common/Heading";
+import Heading from "../Heading";
 import { TrackObject } from "@/types";
 import fetchSearchResults from "@/api/fetchSearchResults";
-import HorizontalLoader from "../common/HorizontalLoader";
+import HorizontalLoader from "../HorizontalLoader";
 import SearchResult from '../SearchResult';
 
 const SearchPanel: React.FC = () => {

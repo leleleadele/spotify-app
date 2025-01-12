@@ -14,7 +14,7 @@ const Heading: React.FC<I_HeadingProps> = ({ tag, children }) => {
     case "h3":
       return <h3 className={styles[tag]}>{children}</h3>;
     case "h4":
-      return <h1 className={styles[tag]}>{children}</h1>;
+      return <h4 className={styles[tag]}>{children}</h4>;
     case "p":
       return <p className={styles[tag]}>{children}</p>;
     default:

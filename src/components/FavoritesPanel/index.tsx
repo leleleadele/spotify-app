@@ -1,4 +1,4 @@
-import Heading from "../common/Heading";
+import Heading from "../Heading";
 import FavoritesList from "./FavoritesTable";
 import styles from "./index.module.css";
 

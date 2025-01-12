@@ -1,4 +1,4 @@
-import Heading from "@/components/common/Heading";
+import Heading from "@/components/Heading";
 import styles from "./index.module.css";
 
 const EmptyMessage: React.FC = () => {

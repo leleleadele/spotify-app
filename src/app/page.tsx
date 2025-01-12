@@ -22,24 +22,20 @@ export default function Home() {
   }
   return (
     <div className={styles.page}>
-      {isClient && (
-        <>
-          <Header />
-          <main
-            className={cn(
-              styles.main,
-              activeView === "favorites" && styles.showRight
-            )}
-          >
-            <div className={cn(styles.panel, styles.left)}>
-              <SearchPanel />
-            </div>
-            <div className={cn(styles.panel, styles.right)}>
-              <FavoritesPanel />
-            </div>
-          </main>
-        </>
-      )}
+      <Header />
+      <main
+        className={cn(
+          styles.main,
+          activeView === "favorites" && styles.showRight
+        )}
+      >
+        <div className={cn(styles.panel, styles.left)}>
+          <SearchPanel />
+        </div>
+        <div className={cn(styles.panel, styles.right)}>
+          <FavoritesPanel />
+        </div>
+      </main>
     </div>
   );
 }

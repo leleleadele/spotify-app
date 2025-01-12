@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "@/store";
 import styles from "./index.module.css";
 import { removeFavorite } from "@/store/slice";
 import CloseIcon from "@/components/common/icons/Close";
 import fetchFavorites from "@/services/fetchFavorites";
-import EmptyMessage from '../EmptyMessage';
+import EmptyMessage from "../EmptyMessage";
 
 interface Track {
   id: string;
@@ -69,9 +69,7 @@ const FavoritesList: React.FC = () => {
           ))}
         </tbody>
       </table>
-      {!favoriteTracks.length && (
-        <EmptyMessage />
-      )}
+      {!favoriteTracks.length && <EmptyMessage />}
     </div>
   );
 };

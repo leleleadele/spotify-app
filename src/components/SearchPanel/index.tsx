@@ -9,14 +9,14 @@ import HorizontalLoader from "../common/HorizontalLoader";
 
 const SearchPanel: React.FC = () => {
   const [results, setResults] = useState<TrackObject[]>([]);
-  const [query, setQuery] = useState<string>(""); // Current search query
-  const [offset, setOffset] = useState<number>(0); // Pagination offset
-  const [loading, setLoading] = useState<boolean>(false); // Loading state
-  const limit = 10; // Number of results per page
+  const [query, setQuery] = useState<string>("");
+  const [offset, setOffset] = useState<number>(0);
+  const [loading, setLoading] = useState<boolean>(false);
+  const limit = 10;
 
   const handleSearch = async (searchQuery: string): Promise<void> => {
-    setQuery(searchQuery); // Store the query for pagination
-    setOffset(0); // Reset offset when performing a new search
+    setQuery(searchQuery);
+    setOffset(0);
     setLoading(true);
     const searchResults = await fetchSearchResults(searchQuery, 0, limit);
     setResults(searchResults);

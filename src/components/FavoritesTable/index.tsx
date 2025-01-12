@@ -30,7 +30,6 @@ const FavoritesTable: React.FC = () => {
 
   return (
     <div data-testid="favorites-table" className={styles.content}>
-      {loading.favorites && <HorizontalLoader />}
       <table className={styles.table}>
         <thead>
           <tr>
@@ -61,6 +60,7 @@ const FavoritesTable: React.FC = () => {
           ))}
         </tbody>
       </table>
+      {loading.favorites && <HorizontalLoader />}
       {!Object.values(favorites).length && <EmptyMessage />}
     </div>
   );

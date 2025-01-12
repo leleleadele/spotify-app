@@ -42,6 +42,7 @@ body {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  font-family: var(--font-geist-sans);
 }
 
 a {
@@ -49,8 +50,18 @@ a {
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-weight: 800;
+}
+
+input {
+  background-color: inherit;
+  color: inherit;
 }

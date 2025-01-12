@@ -1,31 +1,26 @@
 .header {
-    --nav-inactive: var(--primary-50);
-    --nav-active: var(--foreground);
+  padding: 24px;
+  background-color: var(--surface-0);
+  border-bottom: var(--border);
 
-    padding: 24px;
-    background-color: var(--surface-0);
-    border-bottom: var(--border);
+  @media (min-width: 1200px) {
+    display: none;
+  }
 
-    @media (min-width: 1200px) {
-        display: none;
+  .navigation {
+    display: flex;
+    gap: 16px;
+
+    .button {
+      font-size: 18px;
+      padding: 12px 0;
+      background: none;
+      color: var(--primary-50);
+
+      &:hover,
+      &.active {
+        color: var(--foreground);
       }
-
-    .navigation {
-        display: flex;
-        gap: 16px;
-
-        .button {
-            font-size: 18px;
-            padding: 12px 0;
-            background: none;
-            border: none;
-            color: var(--nav-inactive);
-            cursor: pointer;
-
-            &:hover, &.active {
-                border-bottom: 1px solid var(--nav-active);
-                color: var(--nav-active);
-            }
-        }
     }
+  }
 }

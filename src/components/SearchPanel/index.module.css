@@ -25,17 +25,20 @@
         font-size: 16px;
         padding: 12px 8px;
         background: none;
-        border: none;
         color: var(--surface-50);
-        cursor: pointer;
 
         &:not(:first-of-type) {
-            margin-left: auto;
+          margin-left: auto;
         }
 
         &:hover,
         &.active {
           color: var(--foreground);
+        }
+
+        &:disabled,
+        &[disabled] {
+            visibility: hidden;
         }
       }
     }

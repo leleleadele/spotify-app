@@ -55,7 +55,7 @@ const spotifySlice = createSlice({
       .addCase(fetchFavoritesThunk.fulfilled, (state, action) => {
         let parsedData: Record<string, TrackObject> = {};
 
-        action.payload?.forEach((track: TrackObject) => {
+        action.payload.forEach((track: TrackObject) => {
           parsedData[track.id] = track;
         });
 

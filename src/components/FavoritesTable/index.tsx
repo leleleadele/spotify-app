@@ -7,12 +7,13 @@ import {
   removeFavorite,
 } from "@/store/slices/spotifySlice";
 import CloseIcon from "@/components/_icons/Close";
-import EmptyMessage from "../../EmptyMessage";
+import EmptyMessage from "../EmptyMessage";
 import loadDataFromStorage from "@/utils/loadDataFromStorage";
+import HorizontalLoader from '../HorizontalLoader';
 
 const FavoritesTable: React.FC = () => {
   typeof window !== "undefined" ? loadDataFromStorage("favorites") : {};
-  const { favorites } = useSelector((state: RootState) => state.spotify);
+  const { favorites, loading } = useSelector((state: RootState) => state.spotify);
   const dispatch = useDispatch<AppDispatch>();
 
   const handleRemove = (id: string) => {
@@ -27,6 +28,7 @@ const FavoritesTable: React.FC = () => {
 
   return (
     <div className={styles.content}>
+      {loading.favorites && <HorizontalLoader />}
       <table className={styles.table}>
         <thead>
           <tr>

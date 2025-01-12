@@ -15,7 +15,7 @@
       font-size: 18px;
       padding: 12px 0;
       background: none;
-      color: var(--primary-50);
+      color: var(--primary-20);
 
       &:hover,
       &.active {

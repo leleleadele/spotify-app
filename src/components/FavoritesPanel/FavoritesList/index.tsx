@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "@/store";
 import styles from "./index.module.css";
-import { removeFavorite } from "@/store/slice";
+import { removeFavorite } from "@/store/slices/spotify";
 import CloseIcon from "@/components/common/icons/Close";
 import fetchFavorites from "@/services/fetchFavorites";
 import EmptyMessage from "../EmptyMessage";
@@ -17,7 +17,7 @@ interface Track {
 }
 
 const FavoritesList: React.FC = () => {
-  const { favorites } = useSelector((state: RootState) => state.app);
+  const { favorites } = useSelector((state: RootState) => state.spotify);
   const dispatch = useDispatch();
   const [favoriteTracks, setFavoriteTracks] = useState<Track[]>([]);
 

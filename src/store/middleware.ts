@@ -5,9 +5,9 @@ export const localStorageMiddleware: Middleware =
     const result = next(action);
 
     const state = store.getState();
-    if (state.app?.favorites) {
+    if (state.favoritesBrowser?.favorites) {
       try {
-        localStorage.setItem("favorites", JSON.stringify(state.app.favorites));
+        localStorage.setItem("favorites", JSON.stringify(state.favoritesBrowser.favorites));
       } catch (error) {
         console.error("Failed to save favorites to localStorage:", error);
       }

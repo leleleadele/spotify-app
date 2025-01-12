@@ -1,10 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import appReducer from "./slice";
+import spotifyReducer from "./slices/spotify";
 import { localStorageMiddleware } from './middleware';
 
 export const store = configureStore({
   reducer: {
-    app: appReducer,
+    spotify: spotifyReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(localStorageMiddleware),

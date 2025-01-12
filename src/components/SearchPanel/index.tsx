@@ -3,7 +3,7 @@ import SearchBar from "./SearchBar";
 import { useState } from "react";
 import styles from "./index.module.css";
 import Heading from "../common/Heading";
-import { TrackObject } from "@/pages/api/types";
+import { TrackObject } from "@/types";
 import fetchSearchResults from "@/services/fetchSearchResults";
 import HorizontalLoader from "../common/HorizontalLoader";
 

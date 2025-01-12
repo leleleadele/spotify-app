@@ -1,4 +1,4 @@
-import { TrackObject } from "@/pages/api/types";
+import { TrackObject } from "@/types";
 
 const fetchSearchResults = async (
   query: string,

@@ -10,7 +10,7 @@ import { RootState } from "@/store";
 import { useState, useEffect } from 'react';
 
 export default function Home() {
-  const { activeView } = useSelector((state: RootState) => state.app);
+  const { activeView } = useSelector((state: RootState) => state.spotify);
   const [isClient, setIsClient] = useState<boolean>(false);
 
   useEffect(() => {

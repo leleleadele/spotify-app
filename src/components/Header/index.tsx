@@ -1,12 +1,12 @@
 import { RootState } from "@/store";
-import { setActiveView } from "@/store/slice";
+import { setActiveView } from "@/store/slices/spotify";
 import { useDispatch, useSelector } from "react-redux";
 import cn from "classnames";
 import styles from "./index.module.css";
 
 const Header: React.FC = () => {
   const dispatch = useDispatch();
-  const { activeView } = useSelector((state: RootState) => state.app);
+  const { activeView } = useSelector((state: RootState) => state.spotify);
 
   const openSearch = (): void => {
     dispatch(setActiveView("search"));

@@ -27,7 +27,7 @@
 
   .removeButton {
     background-color: transparent;
-    color: var(--primary-50);
+    color: var(--primary-20);
     border: none;
     padding: 6px 0 6px;
     cursor: pointer;

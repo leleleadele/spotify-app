@@ -2,9 +2,9 @@ import { useDispatch, useSelector } from "react-redux";
 import cn from "classnames";
 import HeartIcon from "@/components/common/icons/Heart";
 import styles from "./index.module.css";
-import { addFavorite, removeFavorite } from "@/store/slice";
+import { addFavorite, removeFavorite } from "@/store/slices/spotify";
 import { RootState } from "@/store";
-import { ArtistObject, TrackObject } from "@/pages/api/types";
+import { ArtistObject, TrackObject } from "@/types";
 
 interface ResultItemProps {
   data: TrackObject;
@@ -12,7 +12,7 @@ interface ResultItemProps {
 
 const ResultItem: React.FC<ResultItemProps> = ({ data }) => {
   const dispatch = useDispatch();
-  const { favorites } = useSelector((state: RootState) => state.app);
+  const { favorites } = useSelector((state: RootState) => state.spotify);
 
   const imageUrl = data.album?.images?.[0]?.url || "";
   const handleFavoriteClick = (): void => {

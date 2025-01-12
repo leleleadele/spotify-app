@@ -1,4 +1,4 @@
-import { TracksResponse } from "./types";
+import { TracksResponse } from "../../types";
 import type { NextApiRequest, NextApiResponse } from "next";
 import axios from "axios";
 

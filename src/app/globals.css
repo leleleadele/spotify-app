@@ -28,7 +28,8 @@
 
 html,
 body {
-  height: 100vh;
+  height: 100vh;  /* standard definition (as fallback) */
+  height: 100dvh; /* dynamic vh will make the trick on iOS */
   width: 100vw;
   overflow: hidden;
 }
@@ -67,4 +68,5 @@ button {
 input {
   background-color: inherit;
   color: inherit;
+  border-radius: 0;
 }

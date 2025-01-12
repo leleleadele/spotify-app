@@ -16,6 +16,10 @@
 
     &.showRight {
       transform: translateX(-50%);
+
+      @media (min-width: 1200px) {
+        transform: translateX(0);
+      }
     }
 
     @media (min-width: 1200px) {

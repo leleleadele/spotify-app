@@ -6,11 +6,16 @@
   justify-content: center;
   color: var(--surface-40);
   text-align: center;
-  height: 100%;
+  margin: auto;
 
   .image {
-    height: 250px;
+    display: none;
+    height: 200px;
     object-fit: contain;
     opacity: 0.5;
+
+    @media (min-width: 1200px) {
+      display: block;
+    }
   }
 }

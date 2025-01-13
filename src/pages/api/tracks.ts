@@ -7,7 +7,9 @@ export default async function tracksHandler(
   res: NextApiResponse
 ) {
   const { ids } = req.query;
-  const tokenResponse = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/auth`);
+  const tokenResponse = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/auth`
+  );
   const tokenData = await tokenResponse.json();
 
   if (!tokenData.access_token) {
@@ -25,6 +27,9 @@ export default async function tracksHandler(
         params: { ids },
       }
     );
+    res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+    res.setHeader("Pragma", "no-cache");
+    res.setHeader("Expires", "0");
     res.status(200).json(response.data);
   } catch (error: unknown) {
     if (axios.isAxiosError(error)) {

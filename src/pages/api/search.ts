@@ -7,7 +7,9 @@ export default async function searchHandler(
   res: NextApiResponse
 ) {
   const { query, limit, offset } = req.query;
-  const tokenResponse = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/auth`);
+  const tokenResponse = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/auth`
+  );
   const tokenData = await tokenResponse.json();
 
   if (!tokenData.access_token) {
@@ -26,6 +28,9 @@ export default async function searchHandler(
       }
     );
 
+    res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+    res.setHeader("Pragma", "no-cache");
+    res.setHeader("Expires", "0");
     res.status(200).json(response.data);
   } catch (error) {
     res.status(res.statusCode).json({ error });

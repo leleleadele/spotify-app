@@ -15,6 +15,7 @@ const SearchResult: React.FC<SearchResultProps> = ({ data }) => {
   const { favorites } = useSelector((state: RootState) => state.spotify);
 
   const imageUrl = data.album?.images?.[0]?.url || "";
+  
   const handleFavoriteClick = (): void => {
     if (favorites[data.id]) {
       dispatch(removeFavorite(data.id));

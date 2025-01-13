@@ -2,7 +2,7 @@ import { TracksResponse } from "../../types";
 import type { NextApiRequest, NextApiResponse } from "next";
 import axios from "axios";
 
-export default async function handler(
+export default async function tracksHandler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {

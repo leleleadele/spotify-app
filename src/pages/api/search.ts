@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import axios from "axios";
 import { SearchResponse } from "../../types";
 
-export default async function handler(
+export default async function searchHandler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {

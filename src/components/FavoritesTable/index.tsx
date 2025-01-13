@@ -12,13 +12,12 @@ import loadDataFromStorage from "@/utils/loadDataFromStorage";
 import HorizontalLoader from "../HorizontalLoader";
 
 const FavoritesTable: React.FC = () => {
-  typeof window !== "undefined" ? loadDataFromStorage("favorites") : {};
   const { favorites, loading } = useSelector(
     (state: RootState) => state.spotify
   );
   const dispatch = useDispatch<AppDispatch>();
 
-  const handleRemove = (id: string) => {
+  const handleRemove = (id: string): void => {
     dispatch(removeFavorite(id));
   };
 

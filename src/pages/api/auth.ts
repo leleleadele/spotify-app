@@ -7,7 +7,7 @@ type AuthResponse = {
   expires_in: number;
 };
 
-export default async function handler(
+export default async function authHandler(
   req: NextApiRequest,
   res: NextApiResponse<AuthResponse | { error: string }>
 ): Promise<void> {
